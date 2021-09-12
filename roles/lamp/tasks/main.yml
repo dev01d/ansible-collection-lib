@@ -1,0 +1,3 @@
+# blank file
+- name: Import Lamp task
+  import_tasks: lamp.yml

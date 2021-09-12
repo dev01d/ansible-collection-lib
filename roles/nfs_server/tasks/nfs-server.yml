@@ -1,0 +1,59 @@
+---
+- name: Create mountable webroot dir
+  file:
+    path: /home/'{{ user }}'/webroot
+    state: directory
+    mode: '755'
+    owner: dev
+    group: dev
+
+- name: Create mountable apache_config dir
+  file:
+    path: /home/'{{ user }}'/apache_config
+    state: directory
+    mode: '755'
+    owner: dev
+    group: dev
+
+- name: set mountpoint webroot
+  mount:
+    path: /home/'{{ user }}'/webroot
+    src: /share/webroot
+    fstype: none
+    opts: bind
+    dump: '0'
+    passno: '0'
+    state: present
+
+- name: set mountpoint apache_config
+  mount:
+    path: /home/'{{ user }}'/apache_config
+    src: /share/apache_config
+    fstype: none
+    opts: bind
+    dump: '0'
+    passno: '0'
+    state: present
+
+- name: Ensure NFS utilities are installed.
+  apt:
+    name: nfs-common
+    state: present
+
+- name: Ensure NFS server utilities are installed.
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: copy /etc/exports
+  template:
+    src: ../files/exports.j2
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: '644'
+
+- name: restart nfs server
+  service:
+    name: nfs-kernel-server
+    state: restarted

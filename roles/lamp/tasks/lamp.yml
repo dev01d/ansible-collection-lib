@@ -1,0 +1,110 @@
+- name: Ensure apache2 is installed.
+  apt:
+    name: apache2
+    state: present
+
+- name: Start apache2.
+  systemd:
+    state: started
+    name: apache2
+
+- name: Allow Apache.
+  ufw:
+    rule: allow
+    name: Apache
+
+- name: a2enmod rewrite.
+  apache2_module:
+    state: present
+    name: rewrite
+
+- name: Ensure php is installed.
+  apt:
+    name: php
+    state: present
+
+- name: Ensure libapache2-mod-php is installed.
+  apt:
+    name: libapache2-mod-php
+    state: present
+
+- name: Ensure php-mysql is installed.
+  apt:
+    name: php-mysql
+    state: present
+
+- name: Ensure php-curl is installed.
+  apt:
+    name: php-curl
+    state: present
+
+- name: Ensure php-fpm is installed.
+  apt:
+    name: php-fpm
+    state: present
+
+- name: Ensure php-intl is installed.
+  apt:
+    name: php-intl
+    state: present
+
+- name: Ensure php-mbstring is installed.
+  apt:
+    name: php-mbstring
+    state: present
+
+- name: Ensure php-xmlrpc is installed.
+  apt:
+    name: php-xmlrpc
+    state: present
+
+- name: Ensure php-gd is installed.
+  apt:
+    name: php-gd
+    state: present
+
+- name: Ensure php-xmlrpc is installed.
+  apt:
+    name: php-xmlrpc
+    state: present
+
+- name: Ensure php-xml is installed.
+  apt:
+    name: php-xml
+    state: present
+
+- name: Ensure php-cli is installed.
+  apt:
+    name: php-cli
+    state: present
+
+- name: Ensure php-zip is installed.
+  apt:
+    name: php-zip
+    state: present
+
+- name: copy php.ini
+  template:
+    src: ../files/php.ini.j2
+    dest: /etc/php/7.4/apache2/php.ini
+    owner: root
+    group: root
+    mode: '644'
+
+- name: copy ssl.conf
+  template:
+    src: ../files/ssl.conf.j2
+    dest: /etc/apache2/mods-enabled/ssl.conf
+    owner: root
+    group: root
+    mode: '644'
+
+- name: Restart apache2.
+  systemd:
+    state: restarted
+    name: apache2
+
+- name: restart networking
+  systemd:
+    state: restarted
+    name: networking

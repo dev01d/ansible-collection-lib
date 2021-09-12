@@ -1,0 +1,3 @@
+# blank file
+- name: Import mysql-server task
+  import_tasks: mysql-server.yml

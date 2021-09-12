@@ -1,0 +1,41 @@
+---
+- name: Ensure NFS common is installed.
+  apt:
+    name: nfs-common
+    state: present
+
+- name: Create mountable dir webroot
+  file:
+    path: /mnt/webroot
+    state: directory
+    mode: '777'
+    owner: nobody
+    group: nogroup
+
+- name: Create mountable dir apache_config
+  file:
+    path: /mnt/apache_config
+    state: directory
+    mode: '777'
+    owner: nobody
+    group: nogroup
+
+- name: set mountpoint webroot
+  mount:
+    path: /mnt/webroot
+    src: "{{ nfs_ip }}:/home/'{{ user }}'/webroot"
+    fstype: nfs
+    opts: _netdev,user,auto
+    dump: '0'
+    passno: '0'
+    state: mounted
+
+- name: set mountpoint apache_config
+  mount:
+    path: /mnt/apache_config
+    src: "{{ nfs_ip }}:/home/'{{ user }}'/apache_config"
+    fstype: nfs
+    opts: _netdev,user,auto
+    dump: '0'
+    passno: '0'
+    state: mounted

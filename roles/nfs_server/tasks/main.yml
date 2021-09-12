@@ -1,0 +1,3 @@
+# blank file
+- name: Import NFS server task
+  import_tasks: nfs-server.yml

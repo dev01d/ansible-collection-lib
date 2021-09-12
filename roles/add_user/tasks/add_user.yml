@@ -1,0 +1,17 @@
+---
+- name: create the "{{ user }}" user
+  user:
+    name: '{{ user }}'
+    # password:
+    groups:
+      - sudo
+    state: present
+    shell: /bin/bash # Defaults to /bin/bash
+    system: no # Defaults to no
+    create_home: yes
+    home: /home/"{{ user }}"
+- name: allow "{{ user }}" to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    line: '"{{ user }}" ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'

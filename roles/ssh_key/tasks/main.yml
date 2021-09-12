@@ -1,0 +1,2 @@
+- name: Import SSH key task
+  import_tasks: add_ssh_keys.yml

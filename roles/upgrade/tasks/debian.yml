@@ -1,0 +1,23 @@
+- name: Update package cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Upgrade to the latest packages
+  apt:
+    upgrade: dist
+  register: debian
+
+- name: Autoremove && autoclean
+  apt:
+    autoclean: yes
+    autoremove: yes
+
+- name: Generate list of updated packages
+  shell: grep -E "^$(date +%Y-%m-%d).+ (install|upgrade) " /var/log/dpkg.log |cut -d " " -f 3-5
+  register: result
+  when: debian.changed
+
+- name: Show list of updated packages
+  debug: msg="{{ result.stdout_lines }}"
+  when: debian.changed

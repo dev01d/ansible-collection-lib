@@ -1,0 +1,15 @@
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+    update_cache: true
+  register: yum
+
+- name: Generate list of updated packages
+  shell: grep -E "^$(date +%Y-%m-%d).+ (install|upgrade) " /var/log/yum.log |cut -d " " -f 3-5
+  register: result
+  when: yum.changed
+
+- name: Show list of updated packages
+  debug: msg="{{ result.stdout_lines }}"
+  when: yum.changed

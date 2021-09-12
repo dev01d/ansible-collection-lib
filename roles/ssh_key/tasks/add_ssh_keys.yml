@@ -1,0 +1,7 @@
+---
+- name: Set up ssh keys for the "{{ user }}" user
+  authorized_key:
+    user: "{{ user }}"
+    key: "{{ item }}"
+  with_file:
+    - "{{ ssh_key }}"

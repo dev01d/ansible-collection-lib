@@ -1,0 +1,5 @@
+---
+- name: Ensure MySQL client is installed.
+  apt:
+    name: mysql-client
+    state: present

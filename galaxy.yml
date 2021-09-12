@@ -1,0 +1,25 @@
+namespace: dev01d
+name: lib
+version: 1.0.3
+readme: README.md
+authors:
+  - Jason Behnke <contact@jasonbehnke.io>
+description: collection of tools
+license:
+  - GPL-3.0-only
+tags:
+  - ops
+  - add_users
+  - lamp
+  - mysql
+  - nfs
+  - reboot
+  - slack
+  - ssh_keys
+  - upgrade
+dependencies: {}
+repository: https://github.com/dev01d/ansible-collection-lib
+documentation: https://github.com/dev01d/ansible-collection-lib
+homepage: https://github.com/dev01d/ansible-collection-lib
+issues: https://github.com/dev01d/ansible-collection-lib/issues
+build_ignore: []

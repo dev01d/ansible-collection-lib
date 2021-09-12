@@ -1,0 +1,10 @@
+---
+- name: Ensure MySQL server is installed.
+  apt:
+    name: mysql-server
+    state: present
+
+- name: Restart service mysql, in all cases
+  service:
+    name: mysql
+    state: restarted
