@@ -6,6 +6,17 @@
 ansible-galaxy collection install dev01d.lib
 ```
 
+### Requirements file
+
+```yml
+---
+collections:
+  - dev01d.lib
+  #! or
+  - name: hhttps://github.com/dev01d/ansible-collection-lib.git
+    type: git
+```
+
 ## Usage
 
 ### Role Variables
