@@ -1,6 +1,6 @@
 namespace: dev01d
 name: lib
-version: 1.0.3
+version: 1.0.4
 readme: README.md
 authors:
   - Jason Behnke <contact@jasonbehnke.io>
