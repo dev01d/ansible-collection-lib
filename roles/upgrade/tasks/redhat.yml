@@ -1,12 +1,12 @@
 - name: upgrade all packages
   yum:
-    name: '*'
+    name: "*"
     state: latest
     update_cache: true
   register: yum
 
 - name: Generate list of updated packages
-  shell: grep -E "^$(date +%Y-%m-%d).+ (install|upgrade) " /var/log/yum.log |cut -d " " -f 3-5
+  shell: rpm -qa --last | grep "$(date +%a\ %d\ %b\ %Y)" |cut -f 1 -d " "
   register: result
   when: yum.changed
 
