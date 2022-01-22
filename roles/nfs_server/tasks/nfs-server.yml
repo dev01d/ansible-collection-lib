@@ -3,7 +3,7 @@
   file:
     path: /home/'{{ user }}'/webroot
     state: directory
-    mode: '755'
+    mode: "755"
     owner: dev
     group: dev
 
@@ -11,7 +11,7 @@
   file:
     path: /home/'{{ user }}'/apache_config
     state: directory
-    mode: '755'
+    mode: "755"
     owner: dev
     group: dev
 
@@ -21,8 +21,8 @@
     src: /share/webroot
     fstype: none
     opts: bind
-    dump: '0'
-    passno: '0'
+    dump: "0"
+    passno: "0"
     state: present
 
 - name: set mountpoint apache_config
@@ -31,8 +31,8 @@
     src: /share/apache_config
     fstype: none
     opts: bind
-    dump: '0'
-    passno: '0'
+    dump: "0"
+    passno: "0"
     state: present
 
 - name: Ensure NFS utilities are installed.
@@ -51,7 +51,7 @@
     dest: /etc/exports
     owner: root
     group: root
-    mode: '644'
+    mode: "644"
 
 - name: restart nfs server
   service:

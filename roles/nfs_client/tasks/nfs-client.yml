@@ -8,7 +8,7 @@
   file:
     path: /mnt/webroot
     state: directory
-    mode: '777'
+    mode: "777"
     owner: nobody
     group: nogroup
 
@@ -16,7 +16,7 @@
   file:
     path: /mnt/apache_config
     state: directory
-    mode: '777'
+    mode: "777"
     owner: nobody
     group: nogroup
 
@@ -26,8 +26,8 @@
     src: "{{ nfs_ip }}:/home/'{{ user }}'/webroot"
     fstype: nfs
     opts: _netdev,user,auto
-    dump: '0'
-    passno: '0'
+    dump: "0"
+    passno: "0"
     state: mounted
 
 - name: set mountpoint apache_config
@@ -36,6 +36,6 @@
     src: "{{ nfs_ip }}:/home/'{{ user }}'/apache_config"
     fstype: nfs
     opts: _netdev,user,auto
-    dump: '0'
-    passno: '0'
+    dump: "0"
+    passno: "0"
     state: mounted
