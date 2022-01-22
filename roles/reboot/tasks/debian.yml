@@ -2,4 +2,5 @@
   stat:
     path: /var/run/reboot-required
   notify: Rebooting machine(s)
+  register: reboot_required
   changed_when: reboot_required.stat.exists
