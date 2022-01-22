@@ -1,0 +1,6 @@
+- name: Rebooting machine(s)
+  reboot:
+    pre_reboot_delay: 2
+    post_reboot_delay: 40
+    reboot_timeout: 60
+

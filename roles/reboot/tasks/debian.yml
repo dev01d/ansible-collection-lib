@@ -1,11 +1,5 @@
 - name: Check if reboot is required
   stat:
     path: /var/run/reboot-required
-  register: reboot_required_file
-
-- name: Rebooting machine(s)
-  reboot:
-    pre_reboot_delay: 2
-    post_reboot_delay: 40
-    reboot_timeout: 60
-  when: reboot_required_file.stat.exists
+  notify: Rebooting machine(s)
+  changed_when: reboot_required.stat.exists
