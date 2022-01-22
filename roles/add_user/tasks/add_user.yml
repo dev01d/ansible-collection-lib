@@ -1,7 +1,7 @@
 ---
 - name: create the "{{ user }}" user
   user:
-    name: '{{ user }}'
+    name: "{{ user }}"
     # password:
     groups:
       - sudo
@@ -14,4 +14,4 @@
   lineinfile:
     dest: /etc/sudoers
     line: '"{{ user }}" ALL=(ALL) NOPASSWD: ALL'
-    validate: 'visudo -cf %s'
+    validate: "visudo -cf %s"

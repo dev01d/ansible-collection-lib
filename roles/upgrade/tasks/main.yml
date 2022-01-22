@@ -1,6 +1,6 @@
 - name: Import RedHat task
-  import_tasks: redhat.yml
+  include_tasks: redhat.yml
   when: ansible_facts['os_family']|lower == 'redhat'
 - name: Import Debian task
-  import_tasks: debian.yml
+  include_tasks: debian.yml
   when: ansible_facts['os_family']|lower == 'debian'

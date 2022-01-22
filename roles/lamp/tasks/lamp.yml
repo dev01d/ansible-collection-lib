@@ -89,7 +89,7 @@
     dest: /etc/php/7.4/apache2/php.ini
     owner: root
     group: root
-    mode: '644'
+    mode: "644"
 
 - name: copy ssl.conf
   template:
@@ -97,7 +97,7 @@
     dest: /etc/apache2/mods-enabled/ssl.conf
     owner: root
     group: root
-    mode: '644'
+    mode: "644"
 
 - name: Restart apache2.
   systemd:
