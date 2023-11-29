@@ -53,11 +53,6 @@
     name: php-mbstring
     state: present
 
-- name: Ensure php-xmlrpc is installed.
-  apt:
-    name: php-xmlrpc
-    state: present
-
 - name: Ensure php-gd is installed.
   apt:
     name: php-gd
